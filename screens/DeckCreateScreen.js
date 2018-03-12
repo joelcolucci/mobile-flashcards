@@ -1,11 +1,14 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import DeckCreateForm from '../components/DeckCreateForm';
 
-function DeckCreateScreen({ navigation }) {
+
+function DeckCreateScreen() {
   return (
     <View>
-      <Text>New deck</Text>
+      <Text>Create a new deck</Text>
+      <DeckCreateForm />
     </View>
   );
 }
