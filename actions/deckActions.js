@@ -2,7 +2,7 @@ import * as StorageAPI from '../utilities/StorageAPI';
 
 
 /** READ ALL */
-const DECK_READ_ALL_SUCCESS = 'DECK_READ_ALL_SUCCESS';
+export const DECK_READ_ALL_SUCCESS = 'DECK_READ_ALL_SUCCESS';
 
 export const deckReadAllSuccess = (decks) => {
   return {
@@ -11,7 +11,7 @@ export const deckReadAllSuccess = (decks) => {
   };
 };
 
-export const readDecks = () => {
+export const readAllDecks = () => {
   return (dispatch) => {
     return StorageAPI
       .getDecks()
@@ -23,7 +23,7 @@ export const readDecks = () => {
 
 
 /** READ */
-const DECK_READ_SUCCESS = 'DECK_READ_SUCCESS';
+export const DECK_READ_SUCCESS = 'DECK_READ_SUCCESS';
 
 export const deckReadSuccess = (deck) => {
   return {
@@ -44,7 +44,7 @@ export const readDeck = (title) => {
 
 
 /** CREATE */
-const DECK_CREATE_SUCCESS = 'DECK_CREATE_SUCCESS';
+export const DECK_CREATE_SUCCESS = 'DECK_CREATE_SUCCESS';
 
 export const deckCreateSuccess = (title) => {
   return {
