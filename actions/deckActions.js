@@ -35,7 +35,7 @@ export const deckReadSuccess = (deck) => {
 export const readDeck = (title) => {
   return (dispatch) => {
     return StorageAPI
-      .readDeck(title)
+      .getDeck(title)
       .then((deck) => {
         dispatch(deckReadSuccess(deck));
       });
