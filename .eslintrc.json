@@ -1,0 +1,18 @@
+{
+    "extends": [
+        "google",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "rules": {
+        "comma-dangle": ["error", "never"],
+        "object-curly-spacing": 0,
+        "require-jsdoc": "off"
+    }
+}
