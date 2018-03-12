@@ -12,7 +12,7 @@ const deckReducer = (previousState=initialState, action) => {
     case DECK_CREATE_SUCCESS:
       return {
         ...previousState,
-        [action.title]: {}
+        [action.deck.title]: action.deck
       };
 
     case DECK_READ_ALL_SUCCESS:

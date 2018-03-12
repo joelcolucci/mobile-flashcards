@@ -46,10 +46,10 @@ export const readDeck = (title) => {
 /** CREATE */
 export const DECK_CREATE_SUCCESS = 'DECK_CREATE_SUCCESS';
 
-export const deckCreateSuccess = (title) => {
+export const deckCreateSuccess = (deck) => {
   return {
     type: DECK_CREATE_SUCCESS,
-    title
+    deck
   };
 };
 
@@ -57,8 +57,8 @@ export const createDeck = (title) => {
   return (dispatch) => {
     return StorageAPI
       .saveDeckTitle(title)
-      .then((title) => {
-        dispatch(deckCreateSuccess(title));
+      .then((deck) => {
+        dispatch(deckCreateSuccess(deck));
       });
   };
 };

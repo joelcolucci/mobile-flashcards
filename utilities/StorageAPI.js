@@ -61,14 +61,20 @@ export const getDeck = (title) => {
  * @return {Promise}
  */
 export const saveDeckTitle = (title) => {
-  let payload = JSON.stringify({
-    [title]: {
-      title,
-      questions: []
-    }
-  });
+  let deck = {
+    title,
+    questions: []
+  };
 
-  return AsyncStorage.mergeItem(APP_STORAGE_KEY, payload);
+  let mergeItem = {
+    [title]: deck
+  };
+
+  return AsyncStorage
+    .mergeItem(APP_STORAGE_KEY, JSON.stringify(mergeItem))
+    .then(() => {
+      return deck;
+    });
 };
 
 
