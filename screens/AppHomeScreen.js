@@ -1,10 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-
 import { connect } from 'react-redux';
 
 import { readAllDecks } from '../actions/deckActions';
-
 import DeckList from '../components/DeckList';
 
 
@@ -17,7 +15,9 @@ class AppHomeScreen extends React.Component {
     return (
       <View>
         <Text>This is the Home view</Text>
-        <DeckList decks={this.props.decks} />
+        <DeckList
+          decks={this.props.decks}
+          navigation={this.props.navigation} />
       </View>
     );
   }

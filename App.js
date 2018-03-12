@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -7,8 +8,10 @@ import thunk from 'redux-thunk';
 
 import deckReducer from './reducers/deckReducer';
 
-import AppTabBar from './components/AppTabBar';
+
 import AppStatusBar from './components/AppStatusbar';
+import AppTabBar from './components/AppTabBar';
+import DeckReadScreen from './screens/DeckReadScreen';
 
 
 const middleware = [thunk];
@@ -24,13 +27,23 @@ const store = createStore(
 );
 
 
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: AppTabBar
+  },
+  DeckDetails: {
+    screen: DeckReadScreen
+  }
+});
+
+
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
         <View style={styles.container}>
           <AppStatusBar backgroundColor={'purple'} barStyle="light-content" />
-          <AppTabBar />
+          <MainNavigator />
         </View>
       </Provider>
     );

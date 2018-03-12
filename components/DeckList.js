@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
 
 
 function DeckList(props) {
@@ -10,6 +10,10 @@ function DeckList(props) {
           <View key={value.title}>
             <Text>{value.title}</Text>
             <Text>{value.questions.length}</Text>
+            <Button
+              title="Go to Details"
+              onPress={() => props.navigation.navigate('DeckDetails', {deckId: value.title})}
+            />
           </View>
         );
       })}
