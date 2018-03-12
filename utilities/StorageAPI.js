@@ -35,8 +35,7 @@ const APP_STORAGE_KEY = 'mobile-flashcards';
 export const getDecks = () => {
   return AsyncStorage
     .getItem(APP_STORAGE_KEY)
-    .then(parseJson)
-    .then(formatDeckResults);
+    .then(parseJson);
 };
 
 
@@ -64,7 +63,8 @@ export const getDeck = (title) => {
 export const saveDeckTitle = (title) => {
   let payload = JSON.stringify({
     [title]: {
-      title
+      title,
+      questions: []
     }
   });
 
@@ -89,17 +89,6 @@ export const addCardToDeck = (title, card) => {
 
   return AsyncStorage.mergeItem(APP_STORAGE_KEY, payload);
 };
-
-
-function formatDeckResults(store) {
-  return Object.keys(store).map((value) => {
-    let deck = store[value];
-    return {
-      title: deck.title,
-      numberOfQuestions: deck.questions.length
-    };
-  });
-}
 
 
 function parseJson(string) {
