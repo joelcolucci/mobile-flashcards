@@ -27,6 +27,14 @@ class DeckReadScreen extends React.Component {
         <Text>Read deck</Text>
         <Text>{deck.title}</Text>
         <Text>{deck.questions.length}</Text>
+        {deck.questions && deck.questions.map((value, index) => {
+          return (
+            <View key={index}>
+              <Text>{value.question}</Text>
+              <Text>{value.answer}</Text>
+            </View>
+          );
+        })}
         <Button
           title="Add new question"
           onPress={() => navigation.navigate('CardCreate', {deckId: deck.title})}/>

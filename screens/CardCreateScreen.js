@@ -6,8 +6,10 @@ import CardCreateForm from '../components/CardCreateForm';
 
 class CardCreateScreen extends React.Component {
   render() {
+    let { deckId } = this.props.navigation.state.params;
+
     return (
-      <CardCreateForm />
+      <CardCreateForm deck={deckId} />
     );
   }
 }

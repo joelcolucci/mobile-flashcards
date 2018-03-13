@@ -1,5 +1,8 @@
 import React from 'react';
 import { Button, Text, View, TextInput } from 'react-native';
+import { connect } from 'react-redux';
+
+import { addCardToDeck } from '../actions/deckActions';
 
 
 class CardCreateFrom extends React.Component {
@@ -23,14 +26,14 @@ class CardCreateFrom extends React.Component {
 
   handleSubmit() {
     let { question, answer } = this.state;
+    let { deck } = this.props;
 
     let card = {
       question,
       answer
     };
 
-    // TODO:Dispatch action
-    // this.props.dispatch();
+    this.props.dispatch(addCardToDeck(deck, card));
 
     this.setState({
       question: '',
@@ -59,4 +62,4 @@ class CardCreateFrom extends React.Component {
 }
 
 
-export default CardCreateFrom;
+export default connect()(CardCreateFrom);
