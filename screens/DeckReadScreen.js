@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Button, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import { readDeck } from '../actions/deckActions';
@@ -21,11 +21,15 @@ class DeckReadScreen extends React.Component {
   }
 
   render() {
+    let { deck, navigation } = this.props;
     return (
       <View>
         <Text>Read deck</Text>
-        <Text>{this.props.deck.title}</Text>
-        <Text>{this.props.deck.questions.length}</Text>
+        <Text>{deck.title}</Text>
+        <Text>{deck.questions.length}</Text>
+        <Button
+          title="Add new question"
+          onPress={() => navigation.navigate('CardCreate', {deckId: deck.title})}/>
       </View>
     );
   }

@@ -11,6 +11,7 @@ import deckReducer from './reducers/deckReducer';
 
 import AppStatusBar from './components/AppStatusbar';
 import AppTabBar from './components/AppTabBar';
+import CardCreateScreen from './screens/CardCreateScreen';
 import DeckReadScreen from './screens/DeckReadScreen';
 
 
@@ -33,6 +34,9 @@ const MainNavigator = StackNavigator({
   },
   DeckDetails: {
     screen: DeckReadScreen
+  },
+  CardCreate: {
+    screen: CardCreateScreen
   }
 });
 
