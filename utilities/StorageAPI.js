@@ -86,14 +86,34 @@ export const saveDeckTitle = (title) => {
  * @return {Promise}
  */
 export const addCardToDeck = (title, card) => {
-  let payload = JSON.stringify({
-    [title.questions]: [
-      ...title.questions,
-      card
-    ]
-  });
+  let payload = {
+    [title]: {
+      questions: [
+        card
+      ]
+    }
+  };
 
-  return AsyncStorage.mergeItem(APP_STORAGE_KEY, payload);
+  return AsyncStorage
+    .getItem(APP_STORAGE_KEY)
+    .then(parseJson)
+    .then((store) => {
+      let updatedStore = {
+        ...store,
+        [title]: {
+          ...store[title],
+          questions: [
+            ...store[title].questions,
+            card
+          ]
+        }
+      };
+
+      return AsyncStorage.setItem(APP_STORAGE_KEY, JSON.stringify(updatedStore));
+    })
+    .then(() => {
+      return card;
+    });
 };
 
 
