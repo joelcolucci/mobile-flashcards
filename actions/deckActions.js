@@ -62,3 +62,26 @@ export const createDeck = (title) => {
       });
   };
 };
+
+/** ADD CARD */
+export const DECK_ADD_CARD_SUCCESS = 'DECK_ADD_CARD_SUCCESS';
+
+export const deckAddCardSuccess = (deck) => {
+  return {
+    type: DECK_ADD_CARD_SUCCESS,
+    deck
+  };
+};
+
+export const addCardToDeck = (deckTitle, card) => {
+  return (dispatch) => {
+    return StorageAPI
+      .addCardToDeck(deckTitle, card)
+      .then((card) => {
+        dispatch(deckAddCardSuccess({
+          card,
+          title: deckTitle
+        }));
+      });
+  };
+};
