@@ -13,6 +13,7 @@ import AppStatusBar from './components/AppStatusbar';
 import AppTabBar from './components/AppTabBar';
 import CardCreateScreen from './screens/CardCreateScreen';
 import DeckReadScreen from './screens/DeckReadScreen';
+import QuizScreen from './screens/QuizScreen';
 
 
 const middleware = [thunk];
@@ -37,6 +38,9 @@ const MainNavigator = StackNavigator({
   },
   CardCreate: {
     screen: CardCreateScreen
+  },
+  Quiz: {
+    screen: QuizScreen
   }
 });
 

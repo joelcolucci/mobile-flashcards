@@ -36,8 +36,11 @@ class DeckReadScreen extends React.Component {
           );
         })}
         <Button
-          title="Add new question"
+          title="Create New Question"
           onPress={() => navigation.navigate('CardCreate', {deckId: deck.title})}/>
+        <Button
+          title="Start a Quiz"
+          onPress={() => navigation.navigate('Quiz', {deckId: deck.title})}/>
       </View>
     );
   }
