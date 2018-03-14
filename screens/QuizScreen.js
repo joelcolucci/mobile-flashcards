@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { readDeck } from '../actions/deckActions';
+import Question from '../components/Question';
 
 
 class QuizScreen extends React.Component {
@@ -12,10 +13,29 @@ class QuizScreen extends React.Component {
     this.props.dispatch(readDeck(deckId));
   }
 
+  handleCorrect() {
+    console.log('Correct');
+  }
+
+  handleIncorrect() {
+    console.log('Incorrect');
+  }
+
   render() {
     let { deckId } = this.props.navigation.state.params;
     return (
-      <Text>QUIZ on {deckId}</Text>
+      <View>
+        {this.props.questions.map((value, index) => {
+          return (
+            <Question
+              key={index}
+              question={value.question}
+              answer={value.answer}
+              onCorrect={this.handleCorrect}
+              onIncorrect={this.handleIncorrect} />
+          );
+        })}
+      </View>
     );
   }
 }
