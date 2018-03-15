@@ -116,6 +116,10 @@ export const addCardToDeck = (title, card) => {
     });
 };
 
+export const clearAsyncStorage = () => {
+  return AsyncStorage
+    .clear();
+};
 
 function parseJson(string) {
   return JSON.parse(string);

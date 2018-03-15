@@ -3,6 +3,7 @@ import { FlatList, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 
 import { readAllDecks } from '../actions/deckActions';
+import { clearAsyncStorage } from '../utilities/StorageAPI';
 
 
 class AppHomeScreen extends React.Component {
@@ -32,6 +33,10 @@ class AppHomeScreen extends React.Component {
     return (
       <View>
         <Text>This is the Home view</Text>
+        <Button
+          title="Clear AsyncStorage"
+          onPress={() => clearAsyncStorage()} />
+
         <FlatList
           data={this.props.decks}
           renderItem={this.renderDeckItem} />
