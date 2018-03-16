@@ -26,8 +26,8 @@ class DeckReadScreen extends React.Component {
       <View>
         <Text>Read deck</Text>
         <Text>{deck.title}</Text>
-        <Text>{deck.questions.length}</Text>
-        {deck.questions && deck.questions.map((value, index) => {
+        <Text>{deck.cards.length}</Text>
+        {deck.cards && deck.cards.map((value, index) => {
           return (
             <View key={index}>
               <Text>{value.question}</Text>
@@ -37,10 +37,10 @@ class DeckReadScreen extends React.Component {
         })}
         <Button
           title="Create New Question"
-          onPress={() => navigation.navigate('CardCreate', {deckId: deck.title})}/>
+          onPress={() => navigation.navigate('CardCreate', {deckId: deck.id})}/>
         <Button
           title="Start a Quiz"
-          onPress={() => navigation.navigate('Quiz', {deckId: deck.title})}/>
+          onPress={() => navigation.navigate('Quiz', {deckId: deck.id})}/>
       </View>
     );
   }

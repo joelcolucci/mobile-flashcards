@@ -2,7 +2,8 @@ import {
   DECK_CREATE_SUCCESS,
   DECK_READ_ALL_SUCCESS,
   DECK_READ_SUCCESS,
-  DECK_ADD_CARD_SUCCESS } from '../actions/deckActions';
+  DECK_ADD_CARD_SUCCESS,
+  CARD_STATUS_UPDATE_SUCCESS } from '../actions/deckActions';
 
 
 const initialState = {};
@@ -13,7 +14,7 @@ const deckReducer = (previousState=initialState, action) => {
     case DECK_CREATE_SUCCESS:
       return {
         ...previousState,
-        [action.deck.title]: action.deck
+        [action.deck.id]: action.deck
       };
 
     case DECK_READ_ALL_SUCCESS:
@@ -24,14 +25,14 @@ const deckReducer = (previousState=initialState, action) => {
     case DECK_READ_SUCCESS:
       return previousState;
 
+    case CARD_STATUS_UPDATE_SUCCESS:
     case DECK_ADD_CARD_SUCCESS:
-      let { title, card } = action.deck;
+      let { card } = action;
       return {
         ...previousState,
-        [title]: {
-          ...previousState[title],
-          questions: [
-            ...previousState[title].questions,
+        [card.deckId]: {
+          cards: [
+            ...previousState[card.deckId].cards,
             card
           ]
         }

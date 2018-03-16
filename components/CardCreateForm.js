@@ -26,14 +26,16 @@ class CardCreateFrom extends React.Component {
 
   handleSubmit() {
     let { question, answer } = this.state;
-    let { deck } = this.props;
+    let { deckId } = this.props;
 
     let card = {
+      deckId,
       question,
-      answer
+      answer,
+      status: null
     };
 
-    this.props.dispatch(addCardToDeck(deck, card));
+    this.props.dispatch(addCardToDeck(card));
 
     this.setState({
       question: '',

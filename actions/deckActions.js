@@ -1,5 +1,25 @@
 import * as StorageAPI from '../utilities/StorageAPI';
 
+/** CREATE */
+export const DECK_CREATE_SUCCESS = 'DECK_CREATE_SUCCESS';
+
+export const deckCreateSuccess = (deck) => {
+  return {
+    type: DECK_CREATE_SUCCESS,
+    deck
+  };
+};
+
+export const createDeck = (title) => {
+  return (dispatch) => {
+    return StorageAPI
+      .createDeck(title)
+      .then((deck) => {
+        dispatch(deckCreateSuccess(deck));
+      });
+  };
+};
+
 
 /** READ ALL */
 export const DECK_READ_ALL_SUCCESS = 'DECK_READ_ALL_SUCCESS';
@@ -32,10 +52,10 @@ export const deckReadSuccess = (deck) => {
   };
 };
 
-export const readDeck = (title) => {
+export const readDeck = (deckId) => {
   return (dispatch) => {
     return StorageAPI
-      .getDeck(title)
+      .getDeck(deckId)
       .then((deck) => {
         dispatch(deckReadSuccess(deck));
       });
@@ -43,45 +63,42 @@ export const readDeck = (title) => {
 };
 
 
-/** CREATE */
-export const DECK_CREATE_SUCCESS = 'DECK_CREATE_SUCCESS';
+/** ADD CARD */
+export const DECK_ADD_CARD_SUCCESS = 'DECK_ADD_CARD_SUCCESS';
 
-export const deckCreateSuccess = (deck) => {
+export const deckAddCardSuccess = (card) => {
   return {
-    type: DECK_CREATE_SUCCESS,
-    deck
+    type: DECK_ADD_CARD_SUCCESS,
+    card
   };
 };
 
-export const createDeck = (title) => {
+export const addCardToDeck = (card) => {
   return (dispatch) => {
     return StorageAPI
-      .saveDeckTitle(title)
-      .then((deck) => {
-        dispatch(deckCreateSuccess(deck));
+      .addCardToDeck(card)
+      .then((card) => {
+        dispatch(deckAddCardSuccess(card));
       });
   };
 };
 
-/** ADD CARD */
-export const DECK_ADD_CARD_SUCCESS = 'DECK_ADD_CARD_SUCCESS';
+/** Update Card Status */
+export const CARD_STATUS_UPDATE_SUCCESS = 'CARD_STATUS_UPDATE_SUCCESS';
 
-export const deckAddCardSuccess = (deck) => {
+export const cardStatusUpdateSuccess = (card) => {
   return {
-    type: DECK_ADD_CARD_SUCCESS,
-    deck
+    type: CARD_STATUS_UPDATE_SUCCESS,
+    card
   };
 };
 
-export const addCardToDeck = (deckTitle, card) => {
+export const updateCardStatus = (title, question, status) => {
   return (dispatch) => {
     return StorageAPI
-      .addCardToDeck(deckTitle, card)
+      .updateCardStatus(title, question, status)
       .then((card) => {
-        dispatch(deckAddCardSuccess({
-          card,
-          title: deckTitle
-        }));
+        dispatch(cardStatusUpdateSuccess(card));
       });
   };
 };

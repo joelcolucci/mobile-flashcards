@@ -13,19 +13,21 @@ class QuizScreen extends React.Component {
     this.props.dispatch(readDeck(deckId));
   }
 
-  handleCorrect() {
-    console.log('Correct');
+  handleCorrect(question) {
+    console.log(question);
+    // this.props.dispatch(updateQuestionStatus(question, 'correct'));
   }
 
-  handleIncorrect() {
-    console.log('Incorrect');
+  handleIncorrect(question) {
+    console.log(question);
+    // this.props.dispatch(updateQuestionStatus(question, 'incorrect'));
   }
 
   render() {
     let { deckId } = this.props.navigation.state.params;
     return (
       <View>
-        {this.props.questions.map((value, index) => {
+        {this.props.cards && this.props.cards.map((value, index) => {
           return (
             <Question
               key={index}

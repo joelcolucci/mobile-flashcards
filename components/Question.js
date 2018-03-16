@@ -47,10 +47,10 @@ class Question extends React.Component {
         {mainContent}
         <Button
           title="Correct"
-          onPress={this.props.onCorrect} />
+          onPress={() => this.props.onCorrect(this.props.question)} />
         <Button
           title="Incorrect"
-          onPress={this.props.onIncorrect} />
+          onPress={() => this.props.onIncorrect(this.props.question)} />
       </View>
     );
   }

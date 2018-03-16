@@ -20,11 +20,12 @@ class AppHomeScreen extends React.Component {
   renderDeckItem({item}) {
     return (
       <View>
+        <Text>{item.id}</Text>
         <Text>{item.title}</Text>
-        <Text>{item.questions.length}</Text>
+        <Text>{item.cards.length}</Text>
         <Button
           title="Go to Details"
-          onPress={() => this.props.navigation.navigate('DeckDetails', {deckId: item.title})} />
+          onPress={() => this.props.navigation.navigate('DeckDetails', {deckId: item.id})} />
       </View>
     );
   }

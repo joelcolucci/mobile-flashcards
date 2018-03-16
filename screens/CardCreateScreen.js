@@ -9,7 +9,7 @@ class CardCreateScreen extends React.Component {
     let { deckId } = this.props.navigation.state.params;
 
     return (
-      <CardCreateForm deck={deckId} />
+      <CardCreateForm deckId={deckId} />
     );
   }
 }
