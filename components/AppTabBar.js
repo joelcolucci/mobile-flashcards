@@ -3,14 +3,14 @@ import { TabNavigator } from 'react-navigation';
 
 import { FontAwesome } from '@expo/vector-icons';
 
-import AppHomeScreen from '../screens/AppHomeScreen';
+import HomeScreen from '../screens/HomeScreen';
 import AppInfoScreen from '../screens/AppInfoScreen';
 import DeckCreateScreen from '../screens/DeckCreateScreen';
 
 
 const AppTabBar = TabNavigator({
-  AppHomeScreen: {
-    screen: AppHomeScreen,
+  HomeScreen: {
+    screen: HomeScreen,
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({ tintColor }) => <FontAwesome name='home' size={30} color={tintColor} />

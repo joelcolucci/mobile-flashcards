@@ -6,7 +6,7 @@ import { readAllDecks } from '../actions/deckActions';
 import { clearAsyncStorage } from '../utilities/StorageAPI';
 
 
-class AppHomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -56,4 +56,4 @@ function mapStateToProps(state, ownProps) {
 }
 
 
-export default connect(mapStateToProps)(AppHomeScreen);
+export default connect(mapStateToProps)(HomeScreen);
