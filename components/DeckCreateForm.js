@@ -1,10 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, View, Text, TextInput } from 'react-native';
-
-import { connect } from 'react-redux';
-
-import { createDeck } from '../actions/deckActions';
-
 
 class DeckCreateForm extends React.Component {
   constructor(props) {
@@ -26,11 +22,11 @@ class DeckCreateForm extends React.Component {
 
   handleSubmit() {
     let { title } = this.state;
-
-    this.props.dispatch(createDeck(title));
     this.setState({
       title: ''
     });
+
+    this.props.onSubmit(title);
   }
 
   render() {
@@ -49,5 +45,8 @@ class DeckCreateForm extends React.Component {
   }
 }
 
+DeckCreateForm.propTypes = {
+  onSubmit: PropTypes.func
+};
 
-export default connect()(DeckCreateForm);
+export default DeckCreateForm;
