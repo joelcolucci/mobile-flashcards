@@ -35,21 +35,34 @@ export const fetchCreateDeck = (title) => {
 
 
 /** READ ALL */
+export const DECK_READ_ALL_REQUEST = 'DECK_READ_ALL_REQUEST';
+export const DECK_READ_ALL_ERROR = 'DECK_READ_ALL_ERROR';
 export const DECK_READ_ALL_SUCCESS = 'DECK_READ_ALL_SUCCESS';
 
-export const deckReadAllSuccess = (decks) => {
+export const makeDeckReadAllRequest = () => {
+  return {
+    type: DECK_READ_ALL_REQUEST
+  };
+};
+
+export const makeDeckReadAllError = () => {
+  return {
+    type: DECK_READ_ALL_ERROR
+  };
+};
+
+export const makeDeckReadAllSuccess = (decks) => {
   return {
     type: DECK_READ_ALL_SUCCESS,
     decks
   };
 };
-
-export const readAllDecks = () => {
+export const fetchReadAllDecks = () => {
   return (dispatch) => {
     return StorageAPI
       .getDecks()
       .then((decks) => {
-        dispatch(deckReadAllSuccess(decks));
+        dispatch(makeDeckReadAllSuccess(decks));
       });
   };
 };
