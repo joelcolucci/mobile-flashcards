@@ -1,21 +1,34 @@
 import * as StorageAPI from '../utilities/StorageAPI';
 
-/** CREATE */
+export const DECK_CREATE_REQUEST = 'DECK_CREATE_REQUEST';
+export const DECK_CREATE_ERROR = 'DECK_CREATE_ERROR';
 export const DECK_CREATE_SUCCESS = 'DECK_CREATE_SUCCESS';
 
-export const deckCreateSuccess = (deck) => {
+export const makeDeckCreateRequest = () => {
+  return {
+    type: DECK_CREATE_REQUEST
+  };
+};
+
+export const makeDeckCreateError = () => {
+  return {
+    type: DECK_CREATE_ERROR
+  };
+};
+
+export const makeDeckCreateSuccess = (deck) => {
   return {
     type: DECK_CREATE_SUCCESS,
     deck
   };
 };
 
-export const createDeck = (title) => {
+export const fetchCreateDeck = (title) => {
   return (dispatch) => {
     return StorageAPI
       .createDeck(title)
       .then((deck) => {
-        dispatch(deckCreateSuccess(deck));
+        dispatch(makeDeckCreateSuccess(deck));
       });
   };
 };

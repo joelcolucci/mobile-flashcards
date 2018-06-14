@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import Heading from '../components/Heading';
 import DeckCreateForm from '../components/DeckCreateForm';
-import { createDeck } from '../actions/deckActions';
+import { fetchCreateDeck } from '../actions/deckActions';
 
 class DeckCreateScreen extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class DeckCreateScreen extends React.Component {
 
   handleDeckCreateSubmit(title) {
     console.log(title);
-    // this.props.dispatch(createDeck(title));
+    this.props.dispatch(fetchCreateDeck(title));
   }
 
   render() {
