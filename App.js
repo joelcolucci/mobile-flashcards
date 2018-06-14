@@ -6,8 +6,7 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import deckReducer from './reducers/deckReducer';
-
+import { deck } from './reducers/deckReducer';
 
 import AppStatusBar from './components/AppStatusbar';
 import AppTabBar from './components/AppTabBar';
@@ -15,19 +14,17 @@ import CardCreateScreen from './screens/CardCreateScreen';
 import DeckReadScreen from './screens/DeckReadScreen';
 import QuizScreen from './screens/QuizScreen';
 
-
 const middleware = [thunk];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   combineReducers({
-    deckReducer
+    deck
   }),
   composeEnhancers(
     applyMiddleware(...middleware)
   )
 );
-
 
 const MainNavigator = StackNavigator({
   Home: {
@@ -43,7 +40,6 @@ const MainNavigator = StackNavigator({
     screen: QuizScreen
   }
 });
-
 
 export default class App extends React.Component {
   render() {

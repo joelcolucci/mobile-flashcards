@@ -3,7 +3,7 @@ import { Button, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import { readDeck } from '../actions/deckActions';
-
+import { selectDeck } from '../reducers/deckReducer';
 
 class DeckReadScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -49,8 +49,9 @@ class DeckReadScreen extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   let { deckId } = ownProps.navigation.state.params;
+  let deck = selectDeck(state, deckId);
   return {
-    deck: state.deckReducer[deckId]
+    deck: deck
   };
 }
 

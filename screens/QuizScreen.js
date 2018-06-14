@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 
+import { selectDeck } from '../reducers/deckReducer';
 import { readDeck } from '../actions/deckActions';
 import Question from '../components/Question';
 
@@ -44,11 +45,8 @@ class QuizScreen extends React.Component {
 
 
 function mapStateToProps(state, ownProps) {
-  let decks = state.deckReducer;
-
   let { deckId } = ownProps.navigation.state.params;
-
-  let deck = decks[deckId];
+  let deck = selectDeck(state, deckId);
 
   return {
     ...deck

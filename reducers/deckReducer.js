@@ -8,8 +8,8 @@ import {
 
 const initialState = {};
 
-
-const deckReducer = (previousState=initialState, action) => {
+const REDUCER_NAME = 'deck';
+export const deck = (previousState=initialState, action) => {
   switch (action.type) {
     case DECK_CREATE_SUCCESS:
       return {
@@ -43,5 +43,17 @@ const deckReducer = (previousState=initialState, action) => {
   }
 };
 
+export const selectDecks = (state) => {
+  let deckReducer = state[REDUCER_NAME];
 
-export default deckReducer;
+  return Object
+    .keys(deckReducer)
+    .map((key) => deckReducer[key])
+    .sort((a, b) => a.title.localeCompare(b.title));
+};
+
+export const selectDeck = (state, deckId) => {
+  let deckReducer = state[REDUCER_NAME];
+
+  return deckReducer[deckId];
+};
