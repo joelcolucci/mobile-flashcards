@@ -15,8 +15,8 @@ class DeckCreateScreen extends React.Component {
   }
 
   handleDeckCreateSubmit(title) {
-    console.log(title);
     this.props.dispatch(fetchCreateDeck(title));
+    this.props.navigation.goBack();
   }
 
   render() {
