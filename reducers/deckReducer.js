@@ -15,6 +15,7 @@ export const deck = (previousState=initialState, action) => {
       return {
         ...previousState,
         decksById: {
+          ...previousState.decksById,
           [action.deck.id]: action.deck
         }
       };
