@@ -12,8 +12,19 @@ import { fetchReadAllDecks } from '../actions/deckActions';
 import { clearAsyncStorage } from '../utilities/StorageAPI';
 
 class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleDeckClick = this.handleDeckClick.bind(this);
+  }
+
   componentDidMount() {
     this.props.dispatch(fetchReadAllDecks());
+  }
+
+  handleDeckClick(deckId) {
+    let { navigation } = this.props;
+    navigation.navigate('DeckRead', {deckId: deckId});
   }
 
   render() {
@@ -21,7 +32,8 @@ class HomeScreen extends React.Component {
       <View>
         <Heading>Mobile flashcards</Heading>
         <DeckList
-          decks={this.props.decks} />
+          decks={this.props.decks}
+          onDeckClick={this.handleDeckClick} />
         <Button
           title="Clear AsyncStorage"
           onPress={() => clearAsyncStorage()} />
@@ -31,8 +43,9 @@ class HomeScreen extends React.Component {
 }
 
 HomeScreen.propTypes = {
+  decks: PropTypes.array,
   dispatch: PropTypes.func,
-  decks: PropTypes.array
+  navigation: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

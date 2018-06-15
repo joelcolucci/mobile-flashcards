@@ -30,7 +30,7 @@ const MainNavigator = StackNavigator({
   Home: {
     screen: AppTabBar
   },
-  DeckDetails: {
+  DeckRead: {
     screen: DeckReadScreen
   },
   CardCreate: {
