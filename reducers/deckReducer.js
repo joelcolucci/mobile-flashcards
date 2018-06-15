@@ -2,8 +2,7 @@ import {
   DECK_CREATE_SUCCESS,
   DECK_READ_ALL_SUCCESS,
   DECK_READ_SUCCESS,
-  DECK_ADD_CARD_SUCCESS,
-  CARD_STATUS_UPDATE_SUCCESS } from '../actions/deckActions';
+  DECK_CARD_CREATE_SUCCESS } from '../actions/deckActions';
 
 
 const initialState = {};
@@ -25,12 +24,12 @@ export const deck = (previousState=initialState, action) => {
     case DECK_READ_SUCCESS:
       return previousState;
 
-    case CARD_STATUS_UPDATE_SUCCESS:
-    case DECK_ADD_CARD_SUCCESS:
+    case DECK_CARD_CREATE_SUCCESS:
       let { card } = action;
       return {
         ...previousState,
         [card.deckId]: {
+          ...previousState[card.deckId],
           cards: [
             ...previousState[card.deckId].cards,
             card

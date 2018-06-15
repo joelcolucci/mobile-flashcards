@@ -1,5 +1,6 @@
 import * as StorageAPI from '../utilities/StorageAPI';
 
+
 export const DECK_CREATE_REQUEST = 'DECK_CREATE_REQUEST';
 export const DECK_CREATE_ERROR = 'DECK_CREATE_ERROR';
 export const DECK_CREATE_SUCCESS = 'DECK_CREATE_SUCCESS';
@@ -34,7 +35,6 @@ export const fetchCreateDeck = (title) => {
 };
 
 
-/** READ ALL */
 export const DECK_READ_ALL_REQUEST = 'DECK_READ_ALL_REQUEST';
 export const DECK_READ_ALL_ERROR = 'DECK_READ_ALL_ERROR';
 export const DECK_READ_ALL_SUCCESS = 'DECK_READ_ALL_SUCCESS';
@@ -67,6 +67,7 @@ export const fetchReadAllDecks = () => {
       });
   };
 };
+
 
 export const DECK_READ_REQUEST = 'DECK_READ_REQUEST';
 export const DECK_READ_ERROR = 'DECK_READ_ERROR';
@@ -102,27 +103,40 @@ export const fetchReadDeck = (deckId) => {
 };
 
 
-/** ADD CARD */
-export const DECK_ADD_CARD_SUCCESS = 'DECK_ADD_CARD_SUCCESS';
+export const DECK_CARD_CREATE_REQUEST = 'DECK_CARD_CREATE_REQUEST';
+export const DECK_CARD_CREATE_ERROR = 'DECK_CARD_CREATE_ERROR';
+export const DECK_CARD_CREATE_SUCCESS = 'DECK_CARD_CREATE_SUCCESS';
 
-export const deckAddCardSuccess = (card) => {
+export const makeDeckCardCreateRequest = () => {
   return {
-    type: DECK_ADD_CARD_SUCCESS,
+    type: DECK_CARD_CREATE_REQUEST
+  };
+};
+
+export const makeDeckCardCreateError = () => {
+  return {
+    type: DECK_CARD_CREATE_ERROR
+  };
+};
+
+export const makeDeckCardCreateSuccess = (card) => {
+  return {
+    type: DECK_CARD_CREATE_SUCCESS,
     card
   };
 };
 
-export const addCardToDeck = (card) => {
+export const fetchCreateDeckCard = (card) => {
   return (dispatch) => {
     return StorageAPI
       .addCardToDeck(card)
       .then((card) => {
-        dispatch(deckAddCardSuccess(card));
+        dispatch(makeDeckCardCreateSuccess(card));
       });
   };
 };
 
-/** Update Card Status */
+
 export const CARD_STATUS_UPDATE_SUCCESS = 'CARD_STATUS_UPDATE_SUCCESS';
 
 export const cardStatusUpdateSuccess = (card) => {

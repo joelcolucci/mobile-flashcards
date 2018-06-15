@@ -10,7 +10,7 @@ import { deck } from './reducers/deckReducer';
 
 import AppStatusBar from './components/AppStatusbar';
 import AppTabBar from './components/AppTabBar';
-import CardCreateScreen from './screens/CardCreateScreen';
+import DeckCardCreateScreen from './screens/DeckCardCreateScreen';
 import DeckReadScreen from './screens/DeckReadScreen';
 import QuizScreen from './screens/QuizScreen';
 
@@ -33,8 +33,8 @@ const MainNavigator = StackNavigator({
   DeckRead: {
     screen: DeckReadScreen
   },
-  CardCreate: {
-    screen: CardCreateScreen
+  DeckCardCreate: {
+    screen: DeckCardCreateScreen
   },
   Quiz: {
     screen: QuizScreen

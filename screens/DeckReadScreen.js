@@ -29,10 +29,10 @@ class DeckReadScreen extends React.Component {
         <Heading>{deck.title}</Heading>
         <Text>{deck.cards.length || 0} cards</Text>
         <Button
-          title="Create New Question"
-          onPress={() => navigation.navigate('CardCreate', {deckId: deck.id})}/>
+          title="Add card"
+          onPress={() => navigation.navigate('DeckCardCreate', {deckId: deck.id})}/>
         <Button
-          title="Start a Quiz"
+          title="Start quiz"
           onPress={() => navigation.navigate('Quiz', {deckId: deck.id})}/>
       </View>
     );
