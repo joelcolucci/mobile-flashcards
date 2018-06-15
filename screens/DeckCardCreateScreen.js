@@ -13,8 +13,8 @@ class DeckCardCreateScreen extends React.Component {
   }
 
   handleDeckCardCreateSubmit(card) {
-    console.log(card);
     this.props.dispatch(fetchCreateDeckCard(card));
+    this.props.navigation.goBack();
   }
 
   render() {
