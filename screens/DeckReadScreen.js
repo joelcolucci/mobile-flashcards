@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import { readDeck } from '../actions/deckActions';
+import Heading from '../components/Heading';
+import { fetchReadDeck } from '../actions/deckActions';
 import { selectDeck } from '../reducers/deckReducer';
 
 class DeckReadScreen extends React.Component {
@@ -17,24 +19,15 @@ class DeckReadScreen extends React.Component {
   componentDidMount() {
     let { deckId } = this.props.navigation.state.params;
   
-    this.props.dispatch(readDeck(deckId));
+    this.props.dispatch(fetchReadDeck(deckId));
   }
 
   render() {
     let { deck, navigation } = this.props;
     return (
       <View>
-        <Text>Read deck</Text>
-        <Text>{deck.title}</Text>
-        <Text>{deck.cards.length}</Text>
-        {deck.cards && deck.cards.map((value, index) => {
-          return (
-            <View key={index}>
-              <Text>{value.question}</Text>
-              <Text>{value.answer}</Text>
-            </View>
-          );
-        })}
+        <Heading>{deck.title}</Heading>
+        <Text>{deck.cards.length || 0} cards</Text>
         <Button
           title="Create New Question"
           onPress={() => navigation.navigate('CardCreate', {deckId: deck.id})}/>
@@ -46,6 +39,11 @@ class DeckReadScreen extends React.Component {
   }
 }
 
+DeckReadScreen.propTypes = {
+  deck: PropTypes.object,
+  dispatch: PropTypes.func,
+  navigation: PropTypes.object
+};
 
 function mapStateToProps(state, ownProps) {
   let { deckId } = ownProps.navigation.state.params;
@@ -54,6 +52,5 @@ function mapStateToProps(state, ownProps) {
     deck: deck
   };
 }
-
 
 export default connect(mapStateToProps)(DeckReadScreen);

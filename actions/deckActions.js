@@ -57,6 +57,7 @@ export const makeDeckReadAllSuccess = (decks) => {
     decks
   };
 };
+
 export const fetchReadAllDecks = () => {
   return (dispatch) => {
     return StorageAPI
@@ -67,23 +68,35 @@ export const fetchReadAllDecks = () => {
   };
 };
 
-
-/** READ */
+export const DECK_READ_REQUEST = 'DECK_READ_REQUEST';
+export const DECK_READ_ERROR = 'DECK_READ_ERROR';
 export const DECK_READ_SUCCESS = 'DECK_READ_SUCCESS';
 
-export const deckReadSuccess = (deck) => {
+export const makeDeckReadRequest = () => {
+  return {
+    type: DECK_READ_REQUEST
+  };
+};
+
+export const makeDeckReadError = () => {
+  return {
+    type: DECK_READ_ERROR
+  };
+};
+
+export const makeDeckReadSuccess = (deck) => {
   return {
     type: DECK_READ_SUCCESS,
     deck
   };
 };
 
-export const readDeck = (deckId) => {
+export const fetchReadDeck = (deckId) => {
   return (dispatch) => {
     return StorageAPI
       .getDeck(deckId)
       .then((deck) => {
-        dispatch(deckReadSuccess(deck));
+        dispatch(makeDeckReadSuccess(deck));
       });
   };
 };
