@@ -1,7 +1,8 @@
 import {
   DECK_CREATE_SUCCESS,
   DECK_READ_ALL_SUCCESS,
-  DECK_CARD_CREATE_SUCCESS } from '../actions/deckActions';
+  DECK_CARD_CREATE_SUCCESS,
+  DECK_CARD_UPDATE_SUCCESS } from '../actions/deckActions';
 
 
 const initialState = {
@@ -43,6 +44,30 @@ export const deck = (previousState=initialState, action) => {
           }
         }
       };
+
+    case DECK_CARD_UPDATE_SUCCESS: {
+      let { card } = action;
+      let deckCards = previousState.decksById[card.deckId].cards;
+
+      for (let i = 0; i < deckCards.length; i++) {
+        if (deckCards[i].id === card.id) {
+          deckCards[i] = card;
+          break;
+        }
+      }
+      return {
+        ...previousState,
+        decksById: {
+          ...previousState.decksById,
+          [card.deckId]: {
+            ...previousState.decksById[card.deckId],
+            cards: [
+              ...deckCards
+            ]
+          }
+        }
+      };
+    }
 
     default:
       return previousState;

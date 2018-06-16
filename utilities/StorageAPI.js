@@ -7,6 +7,7 @@ const APP_STORAGE_KEY = 'mobile-flashcards';
 export const createDeck = (title) => {
   let deck = {
     id: uuid(),
+    createdAt: Date.now(),
     title
   };
 
@@ -15,6 +16,7 @@ export const createDeck = (title) => {
     .then(parseJson)
     .then((store) => {
       // Check/set initial store values
+      console.log(store);
       if (!store) {
         store = {
           decks: {},
@@ -78,9 +80,12 @@ export const getDeck = (deckId) => {
 export const addCardToDeck = (card) => {
   let newCard = {
     id: uuid(),
+    createdAt: Date.now(),
     deckId: card.deckId,
     question: card.question,
-    answer: card.answer
+    answer: card.answer,
+    isComplete: card.isComplete,
+    isCorrect: card.isCorrect
   };
 
   return AsyncStorage
@@ -101,18 +106,20 @@ export const addCardToDeck = (card) => {
 };
 
 
-export const updateCardStatus = (cardId, status) => {
+export const updateCardStatus = (cardId, isCorrect) => {
+  let updatedCard;
   return AsyncStorage
     .getItem(APP_STORAGE_KEY)
     .then(parseJson)
     .then((store) => {
-      store.cards[cardId].status = status;
-
+      store.cards[cardId].isComplete = true;
+      store.cards[cardId].isCorrect = isCorrect;
+      updatedCard = store.cards[cardId];
       return AsyncStorage
         .setItem(APP_STORAGE_KEY, JSON.stringify(store));
     })
     .then(() => {
-      return card;
+      return updatedCard;
     });
 };
 

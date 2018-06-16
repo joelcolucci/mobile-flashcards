@@ -137,21 +137,35 @@ export const fetchCreateDeckCard = (card) => {
 };
 
 
-export const CARD_STATUS_UPDATE_SUCCESS = 'CARD_STATUS_UPDATE_SUCCESS';
+export const DECK_CARD_UPDATE_REQUEST = 'DECK_CARD_UPDATE_REQUEST';
+export const DECK_CARD_UPDATE_ERROR = 'DECK_CARD_UPDATE_ERROR';
+export const DECK_CARD_UPDATE_SUCCESS = 'DECK_CARD_UPDATE_SUCCESS';
 
-export const cardStatusUpdateSuccess = (card) => {
+export const makeDeckCardUpdateRequest = () => {
   return {
-    type: CARD_STATUS_UPDATE_SUCCESS,
+    type: DECK_CARD_UPDATE_REQUEST
+  };
+};
+
+export const makeDeckCardUpdateError = () => {
+  return {
+    type: DECK_CARD_UPDATE_ERROR
+  };
+};
+
+export const makeDeckCardUpdateSuccess = (card) => {
+  return {
+    type: DECK_CARD_UPDATE_SUCCESS,
     card
   };
 };
 
-export const updateCardStatus = (title, question, status) => {
+export const fetchDeckCardUpdate = (cardId, isCorrect) => {
   return (dispatch) => {
     return StorageAPI
-      .updateCardStatus(title, question, status)
+      .updateCardStatus(cardId, isCorrect)
       .then((card) => {
-        dispatch(cardStatusUpdateSuccess(card));
+        dispatch(makeDeckCardUpdateSuccess(card));
       });
   };
 };

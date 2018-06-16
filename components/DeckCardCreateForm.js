@@ -28,7 +28,8 @@ class CardCreateFrom extends React.Component {
       deckId,
       question,
       answer,
-      status: null
+      isComplete: false,
+      isCorrect: false
     };
 
     this.setState({
