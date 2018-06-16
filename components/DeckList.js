@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, View, ScrollView, Text } from 'react-native';
 
 function DeckList(props) {
   let { decks, onDeckClick } = props;
   return (
-    <View>
+    <ScrollView>
       {decks && decks.map((deck) => {
         return (
           <View key={deck.id}>
@@ -17,12 +17,13 @@ function DeckList(props) {
           </View>
         );
       })}
-    </View>
+    </ScrollView>
   );
 }
 
 DeckList.propTypes = {
-  decks: PropTypes.array
+  decks: PropTypes.array,
+  onDeckClick: PropTypes.func
 };
 
 export default DeckList;
