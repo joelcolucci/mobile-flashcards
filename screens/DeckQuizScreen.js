@@ -1,17 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
 import { connect } from 'react-redux';
 
 import { selectDeck } from '../reducers/deckReducer';
-import { readDeck } from '../actions/deckActions';
-import Question from '../components/Question';
+import Heading from '../components/Heading';
+import QuizCard from '../components/QuizCard';
 
-
-class QuizScreen extends React.Component {
+class DeckQuizScreen extends React.Component {
   componentDidMount() {
     let { deckId } = this.props.navigation.state.params;
-
-    this.props.dispatch(readDeck(deckId));
   }
 
   handleCorrect(question) {
@@ -25,19 +22,18 @@ class QuizScreen extends React.Component {
   }
 
   render() {
-    let { deckId } = this.props.navigation.state.params;
     return (
       <View>
-        {this.props.cards && this.props.cards.map((value, index) => {
-          return (
-            <Question
-              key={index}
-              question={value.question}
-              answer={value.answer}
-              onCorrect={this.handleCorrect}
-              onIncorrect={this.handleIncorrect} />
-          );
-        })}
+        <Heading>Quiz</Heading>
+        <QuizCard
+          question='Capital of Connecticut?'
+          answer='Hartford' />
+        <Button
+          onPress={() => console.log('correct')}
+          title='Correct' />
+        <Button
+          onPress={() => console.log('incorrect')}
+          title='Incorrect' />
       </View>
     );
   }
@@ -54,4 +50,4 @@ function mapStateToProps(state, ownProps) {
 }
 
 
-export default connect(mapStateToProps)(QuizScreen);
+export default connect(mapStateToProps)(DeckQuizScreen);

@@ -12,7 +12,7 @@ import AppStatusBar from './components/AppStatusbar';
 import AppTabBar from './components/AppTabBar';
 import DeckCardCreateScreen from './screens/DeckCardCreateScreen';
 import DeckReadScreen from './screens/DeckReadScreen';
-import QuizScreen from './screens/QuizScreen';
+import DeckQuizScreen from './screens/DeckQuizScreen';
 
 const middleware = [thunk];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -37,7 +37,7 @@ const MainNavigator = StackNavigator({
     screen: DeckCardCreateScreen
   },
   Quiz: {
-    screen: QuizScreen
+    screen: DeckQuizScreen
   }
 });
 
