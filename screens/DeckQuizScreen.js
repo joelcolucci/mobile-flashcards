@@ -3,18 +3,14 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { connect } from 'react-redux';
 
-import { fetchDeckCardUpdate } from '../actions/deckActions';
-import { selectDeck } from '../reducers/deckReducer';
 import Heading from '../components/Heading';
 import QuizCard from '../components/QuizCard';
 
-class DeckQuizScreen extends React.Component {
-  componentDidMount() {
-    let { deckId } = this.props.navigation.state.params;
-  }
+import { fetchDeckCardUpdate } from '../actions/deckActions';
+import { selectDeck } from '../reducers/deckReducer';
 
+class DeckQuizScreen extends React.Component {
   handleAnswer(cardId, isCorrect) {
-    console.log(cardId);
     this.props.dispatch(fetchDeckCardUpdate(cardId, isCorrect));
   }
 
@@ -43,7 +39,9 @@ class DeckQuizScreen extends React.Component {
 }
 
 DeckQuizScreen.propTypes = {
-  card: PropTypes.object
+  card: PropTypes.object,
+  dispatch: PropTypes.func,
+  score: PropTypes.number
 };
 
 function mapStateToProps(state, ownProps) {

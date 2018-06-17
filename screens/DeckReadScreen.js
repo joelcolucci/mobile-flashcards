@@ -4,21 +4,14 @@ import { Button, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import Heading from '../components/Heading';
+
 import { fetchReadDeck } from '../actions/deckActions';
 import { selectDeck } from '../reducers/deckReducer';
 
 class DeckReadScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    let { deckId } = navigation.state.params;
-
-    return {
-      title: deckId
-    }
-  }
-
   componentDidMount() {
     let { deckId } = this.props.navigation.state.params;
-  
+
     this.props.dispatch(fetchReadDeck(deckId));
   }
 
@@ -38,6 +31,13 @@ class DeckReadScreen extends React.Component {
     );
   }
 }
+
+DeckReadScreen.navigationOptions = ({ navigation }) => {
+  let { deckId } = navigation.state.params;
+  return {
+    title: deckId
+  };
+};
 
 DeckReadScreen.propTypes = {
   deck: PropTypes.object,

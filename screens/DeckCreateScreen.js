@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import Heading from '../components/Heading';
 import DeckCreateForm from '../components/DeckCreateForm';
+
 import { fetchCreateDeck } from '../actions/deckActions';
 
 class DeckCreateScreen extends React.Component {
@@ -31,7 +32,8 @@ class DeckCreateScreen extends React.Component {
 }
 
 DeckCreateScreen.propTypes = {
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  navigation: PropTypes.object
 };
 
 export default connect()(DeckCreateScreen);
