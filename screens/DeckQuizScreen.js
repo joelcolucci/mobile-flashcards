@@ -41,7 +41,7 @@ class DeckQuizScreen extends React.Component {
 DeckQuizScreen.propTypes = {
   card: PropTypes.object,
   dispatch: PropTypes.func,
-  score: PropTypes.number
+  score: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
