@@ -1,8 +1,7 @@
+import { Constants } from 'expo';
+import PropTypes from 'prop-types';
 import React from 'react';
-import { View, Platform, StatusBar } from 'react-native';
-
-import { Constants } from 'expo'
-
+import { View, StatusBar } from 'react-native';
 
 function AppStatusBar({backgroundColor, ...props}) {
   return (
@@ -12,5 +11,8 @@ function AppStatusBar({backgroundColor, ...props}) {
   );
 }
 
+AppStatusBar.propTypes = {
+  backgroundColor: PropTypes.string
+};
 
 export default AppStatusBar;

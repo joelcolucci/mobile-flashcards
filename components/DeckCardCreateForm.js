@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Text, View, TextInput } from 'react-native';
 
-class CardCreateFrom extends React.Component {
+class DeckCardCreateFrom extends React.Component {
   constructor(props) {
     super(props);
 
@@ -60,5 +61,9 @@ class CardCreateFrom extends React.Component {
   }
 }
 
+DeckCardCreateFrom.propTypes = {
+  deckId: PropTypes.string,
+  onSubmit: PropTypes.func
+};
 
-export default CardCreateFrom;
+export default DeckCardCreateFrom;

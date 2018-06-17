@@ -1,12 +1,10 @@
+import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 
-import { FontAwesome } from '@expo/vector-icons';
-
-import HomeScreen from '../screens/HomeScreen';
 import AppInfoScreen from '../screens/AppInfoScreen';
 import DeckCreateScreen from '../screens/DeckCreateScreen';
-
+import HomeScreen from '../screens/HomeScreen';
 
 const AppTabBar = TabNavigator({
   HomeScreen: {
@@ -31,6 +29,5 @@ const AppTabBar = TabNavigator({
     }
   }
 });
-
 
 export default AppTabBar;
