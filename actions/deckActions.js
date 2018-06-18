@@ -169,3 +169,37 @@ export const fetchDeckCardUpdate = (cardId, isCorrect) => {
       });
   };
 };
+
+export const DECK_QUIZ_RESET_REQUEST = 'DECK_QUIZ_RESET_REQUEST';
+export const DECK_QUIZ_RESET_ERROR = 'DECK_QUIZ_RESET_ERROR';
+export const DECK_QUIZ_RESET_SUCCESS = 'DECK_QUIZ_RESET_SUCCESS';
+
+export const makeDeckQuizResetRequest = () => {
+  return {
+    type: DECK_QUIZ_RESET_REQUEST
+  };
+};
+
+export const makeDeckQuizResetError = () => {
+  return {
+    type: DECK_QUIZ_RESET_ERROR
+  };
+};
+
+export const makeDeckQuizResetSuccess = (deckId, cards) => {
+  return {
+    type: DECK_QUIZ_RESET_SUCCESS,
+    deckId,
+    cards
+  };
+};
+
+export const fetchDeckQuizReset = (deckId) => {
+  return (dispatch) => {
+    return StorageAPI
+      .resetDeckCardsStatus(deckId)
+      .then((cards) => {
+        dispatch(makeDeckQuizResetSuccess(deckId, cards));
+      });
+  };
+};

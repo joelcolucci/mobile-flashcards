@@ -2,7 +2,8 @@ import {
   DECK_CREATE_SUCCESS,
   DECK_READ_ALL_SUCCESS,
   DECK_CARD_CREATE_SUCCESS,
-  DECK_CARD_UPDATE_SUCCESS } from '../actions/deckActions';
+  DECK_CARD_UPDATE_SUCCESS,
+  DECK_QUIZ_RESET_SUCCESS } from '../actions/deckActions';
 
 
 const initialState = {
@@ -68,6 +69,21 @@ export const deck = (previousState=initialState, action) => {
         }
       };
     }
+
+    case DECK_QUIZ_RESET_SUCCESS:
+      let { deckId, cards } = action;
+      return {
+        ...previousState,
+        decksById: {
+          ...previousState.decksById,
+          [deckId]: {
+            ...previousState.decksById[deckId],
+            cards: [
+              ...cards
+            ]
+          }
+        }
+      };
 
     default:
       return previousState;

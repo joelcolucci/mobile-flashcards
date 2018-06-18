@@ -10,7 +10,9 @@ import {
 import Heading from '../components/Heading';
 import QuizCard from '../components/QuizCard';
 
-import { fetchDeckCardUpdate } from '../actions/deckActions';
+import {
+  fetchDeckCardUpdate,
+  fetchDeckQuizReset } from '../actions/deckActions';
 import { selectDeck } from '../reducers/deckReducer';
 
 class DeckQuizScreen extends React.Component {
@@ -21,6 +23,10 @@ class DeckQuizScreen extends React.Component {
 
   handleAnswer(cardId, isCorrect) {
     this.props.dispatch(fetchDeckCardUpdate(cardId, isCorrect));
+  }
+
+  handleRestart(deckId) {
+    this.props.dispatch(fetchDeckQuizReset(deckId));
   }
 
   render() {
@@ -41,7 +47,12 @@ class DeckQuizScreen extends React.Component {
               title='Incorrect' />
           </View>
         ) : (
-          <Text>Quiz Complete! Score: { this.props.score }</Text>
+          <View>
+            <Text>Quiz Complete! Score: { this.props.score }</Text>
+            <Button
+              onPress={() => this.handleRestart(this.props.deckId)}
+              title='Restart quiz' />
+          </View>
         )}
       </View>
     );
@@ -50,6 +61,7 @@ class DeckQuizScreen extends React.Component {
 
 DeckQuizScreen.propTypes = {
   card: PropTypes.object,
+  deckId: PropTypes.string,
   dispatch: PropTypes.func,
   progress: PropTypes.string,
   score: PropTypes.string
@@ -73,6 +85,7 @@ function mapStateToProps(state, ownProps) {
 
   return {
     card: currentCard,
+    deckId: deckId,
     score: percentageScore,
     progress: `${currentCardIndex + 1}/${numberOfCards}`
   };

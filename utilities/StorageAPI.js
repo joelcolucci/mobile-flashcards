@@ -123,6 +123,27 @@ export const updateCardStatus = (cardId, isCorrect) => {
     });
 };
 
+export const resetDeckCardsStatus = (deckId) => {
+  let updatedDeckCards = [];
+  return AsyncStorage
+    .getItem(APP_STORAGE_KEY)
+    .then(parseJson)
+    .then((store) => {
+      for (let key in store.cards) {
+        if (store.cards[key].deckId === deckId) {
+          store.cards[key].isComplete = false;
+          store.cards[key].isCorrect = false;
+          updatedDeckCards.push(store.cards[key]);
+        }
+      }
+
+      return AsyncStorage
+        .setItem(APP_STORAGE_KEY, JSON.stringify(store));
+    })
+    .then(() => {
+      return updatedDeckCards;
+    });
+};
 
 export const clearAsyncStorage = () => {
   return AsyncStorage
