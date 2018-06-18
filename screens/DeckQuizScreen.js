@@ -20,6 +20,7 @@ class DeckQuizScreen extends React.Component {
         <Heading>Quiz</Heading>
         {this.props.card ? (
           <View>
+            <Text>{this.props.progress}</Text>
             <QuizCard
               question={this.props.card.question}
               answer={this.props.card.answer} />
@@ -41,16 +42,13 @@ class DeckQuizScreen extends React.Component {
 DeckQuizScreen.propTypes = {
   card: PropTypes.object,
   dispatch: PropTypes.func,
+  progress: PropTypes.string,
   score: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
   let { deckId } = ownProps.navigation.state.params;
   let deck = selectDeck(state, deckId);
-
-  let currentCard = deck.cards.find((elem) => {
-    return elem.isComplete === false;
-  });
 
   let numberOfCards = deck.cards.length;
   let numberOfCorrect = deck.cards.filter((elem) => {
@@ -59,9 +57,15 @@ function mapStateToProps(state, ownProps) {
 
   let percentageScore = `${Math.round((numberOfCorrect / numberOfCards) * 100)}%`;
 
+  let currentCardIndex = deck.cards.findIndex((elem) => {
+    return elem.isComplete === false;
+  });
+  let currentCard = deck.cards[currentCardIndex];
+
   return {
     card: currentCard,
-    score: percentageScore
+    score: percentageScore,
+    progress: `${currentCardIndex + 1}/${numberOfCards}`
   };
 }
 
