@@ -33,9 +33,9 @@ class DeckReadScreen extends React.Component {
 }
 
 DeckReadScreen.navigationOptions = ({ navigation }) => {
-  let { deckId } = navigation.state.params;
+  let { deckTitle } = navigation.state.params;
   return {
-    title: deckId
+    title: deckTitle
   };
 };
 

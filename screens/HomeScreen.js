@@ -21,9 +21,12 @@ class HomeScreen extends React.Component {
     this.props.dispatch(fetchReadAllDecks());
   }
 
-  handleDeckClick(deckId) {
+  handleDeckClick(deckId, deckTitle) {
     let { navigation } = this.props;
-    navigation.navigate('DeckRead', {deckId: deckId});
+    navigation.navigate('DeckRead', {
+      deckId: deckId,
+      deckTitle: deckTitle
+    });
   }
 
   render() {

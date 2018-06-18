@@ -13,7 +13,7 @@ function DeckList(props) {
             <Text>{deck.cards.length || 0} cards</Text>
             <Button
               title="View deck"
-              onPress={() => onDeckClick(deck.id)} />
+              onPress={() => onDeckClick(deck.id, deck.title)} />
           </View>
         );
       })}
