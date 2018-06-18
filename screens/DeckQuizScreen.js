@@ -3,6 +3,10 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { connect } from 'react-redux';
 
+import {
+  clearLocalNotification,
+  setLocalNotification } from '../utilities/NotificationAPI';
+
 import Heading from '../components/Heading';
 import QuizCard from '../components/QuizCard';
 
@@ -10,6 +14,11 @@ import { fetchDeckCardUpdate } from '../actions/deckActions';
 import { selectDeck } from '../reducers/deckReducer';
 
 class DeckQuizScreen extends React.Component {
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification);
+  }
+
   handleAnswer(cardId, isCorrect) {
     this.props.dispatch(fetchDeckCardUpdate(cardId, isCorrect));
   }
