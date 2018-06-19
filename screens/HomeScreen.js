@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button } from 'react-native';
 import { connect } from 'react-redux';
 
 import Container from '../components/Container';
 import DeckList from '../components/DeckList';
 import Heading from '../components/Heading';
-import { clearAsyncStorage } from '../utilities/StorageAPI';
 
 import { fetchReadAllDecks } from '../actions/deckActions';
 import { selectDecks } from '../reducers/deckReducer';
@@ -34,9 +32,6 @@ class HomeScreen extends React.Component {
     return (
       <Container>
         <Heading>Mobile flashcards</Heading>
-        <Button
-          title="Clear AsyncStorage"
-          onPress={() => clearAsyncStorage()} />
         <DeckList
           decks={this.props.decks}
           onDeckClick={this.handleDeckClick} />
