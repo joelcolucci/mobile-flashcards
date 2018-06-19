@@ -31,6 +31,10 @@ class DeckCreateScreen extends React.Component {
   }
 }
 
+DeckCreateScreen.navigationOptions = {
+  header: null
+};
+
 DeckCreateScreen.propTypes = {
   dispatch: PropTypes.func,
   navigation: PropTypes.object

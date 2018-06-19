@@ -12,4 +12,8 @@ function AppInfoScreen(props) {
   );
 }
 
+AppInfoScreen.navigationOptions = {
+  header: null
+};
+
 export default AppInfoScreen;

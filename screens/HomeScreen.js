@@ -44,6 +44,10 @@ class HomeScreen extends React.Component {
   }
 }
 
+HomeScreen.navigationOptions = {
+  header: null
+};
+
 HomeScreen.propTypes = {
   decks: PropTypes.array,
   dispatch: PropTypes.func,
