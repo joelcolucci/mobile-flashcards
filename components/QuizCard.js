@@ -1,6 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+
+import Card from '../components/Card';
+import SecondaryButton from '../components/SecondaryButton';
+
+const styles = StyleSheet.create({
+  center: {
+    textAlign: 'center',
+    fontSize: 22
+  }
+});
 
 class QuizCard extends React.Component {
   constructor(props) {
@@ -23,23 +33,23 @@ class QuizCard extends React.Component {
 
   render() {
     return (
-      <View>
+      <Card>
         {!this.state.isCardFlipped ? (
           <View>
-            <Text>{this.props.question}</Text>
-            <Button
+            <Text style={styles.center}>{this.props.question}</Text>
+            <SecondaryButton
               onPress={this.handleClick}
               title='Show answer' />
           </View>
         ) : (
           <View>
-            <Text>{this.props.answer}</Text>
-            <Button
+            <Text style={styles.center}>{this.props.answer}</Text>
+            <SecondaryButton
               onPress={this.handleClick}
               title='Show question' />
           </View>
         )}
-      </View>
+      </Card>
     );
   }
 }

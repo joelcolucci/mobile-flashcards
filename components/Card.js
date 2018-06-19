@@ -3,22 +3,25 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    marginTop: 5,
+    marginBottom: 5,
+    padding: 15
   }
 });
 
-function Container(props) {
+function Card(props) {
   return (
-    <View style={styles.container}>
+    <View style={styles.card}>
       {props.children}
     </View>
   );
 }
 
-Container.propTypes = {
+Card.propTypes = {
   children: PropTypes.node
 };
 
-export default Container;
+export default Card;
