@@ -39,7 +39,7 @@ class DeckCreateForm extends React.Component {
           value={this.state.title} />
         <Button
           onPress={this.handleSubmit}
-          title="Save" />
+          title="Create deck" />
       </View>
     );
   }

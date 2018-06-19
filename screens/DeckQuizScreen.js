@@ -53,6 +53,9 @@ class DeckQuizScreen extends React.Component {
             <Button
               onPress={() => this.handleRestart(this.props.deckId)}
               title='Restart quiz' />
+            <Button
+              onPress={() => this.props.navigation.goBack()}
+              title='Back to deck' />
           </View>
         )}
       </Container>
@@ -64,6 +67,7 @@ DeckQuizScreen.propTypes = {
   card: PropTypes.object,
   deckId: PropTypes.string,
   dispatch: PropTypes.func,
+  navigation: PropTypes.object,
   progress: PropTypes.string,
   score: PropTypes.string
 };
