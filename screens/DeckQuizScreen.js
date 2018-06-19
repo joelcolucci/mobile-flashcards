@@ -7,6 +7,7 @@ import {
   clearLocalNotification,
   setLocalNotification } from '../utilities/NotificationAPI';
 
+import Container from '../components/Container';
 import Heading from '../components/Heading';
 import QuizCard from '../components/QuizCard';
 
@@ -31,7 +32,7 @@ class DeckQuizScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <Container>
         <Heading>Quiz</Heading>
         {this.props.card ? (
           <View>
@@ -54,7 +55,7 @@ class DeckQuizScreen extends React.Component {
               title='Restart quiz' />
           </View>
         )}
-      </View>
+      </Container>
     );
   }
 }

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View } from 'react-native';
 import { connect } from 'react-redux';
 
+import Container from '../components/Container';
 import Heading from '../components/Heading';
 import DeckCreateForm from '../components/DeckCreateForm';
 
@@ -22,11 +22,11 @@ class DeckCreateScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <Container style={styles.container}>
         <Heading>Create a new deck</Heading>
         <DeckCreateForm
           onSubmit={this.handleDeckCreateSubmit} />
-      </View>
+      </Container>
     );
   }
 }

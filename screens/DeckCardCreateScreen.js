@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View } from 'react-native';
 import { connect } from 'react-redux';
 
+import Container from '../components/Container';
 import DeckCardCreateForm from '../components/DeckCardCreateForm';
 import Heading from '../components/Heading';
 
@@ -24,12 +24,12 @@ class DeckCardCreateScreen extends React.Component {
     let { deckId } = this.props.navigation.state.params;
 
     return (
-      <View>
+      <Container>
         <Heading>Add a card</Heading>
         <DeckCardCreateForm
           deckId={deckId}
           onSubmit={this.handleDeckCardCreateSubmit} />
-      </View>
+      </Container>
     );
   }
 }

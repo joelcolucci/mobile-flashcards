@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, Text } from 'react-native';
 import { connect } from 'react-redux';
 
+import Container from '../components/Container';
 import Heading from '../components/Heading';
 
 import { fetchReadDeck } from '../actions/deckActions';
@@ -18,7 +19,7 @@ class DeckReadScreen extends React.Component {
   render() {
     let { deck, navigation } = this.props;
     return (
-      <View>
+      <Container>
         <Heading>{deck.title}</Heading>
         <Text>{deck.cards.length || 0} cards</Text>
         <Button
@@ -27,7 +28,7 @@ class DeckReadScreen extends React.Component {
         <Button
           title="Start quiz"
           onPress={() => navigation.navigate('Quiz', {deckId: deck.id})}/>
-      </View>
+      </Container>
     );
   }
 }

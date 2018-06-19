@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View, Button } from 'react-native';
+import { Button } from 'react-native';
 import { connect } from 'react-redux';
 
+import Container from '../components/Container';
 import DeckList from '../components/DeckList';
 import Heading from '../components/Heading';
 import { clearAsyncStorage } from '../utilities/StorageAPI';
@@ -31,7 +32,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <Container>
         <Heading>Mobile flashcards</Heading>
         <Button
           title="Clear AsyncStorage"
@@ -39,7 +40,7 @@ class HomeScreen extends React.Component {
         <DeckList
           decks={this.props.decks}
           onDeckClick={this.handleDeckClick} />
-      </View>
+      </Container>
     );
   }
 }

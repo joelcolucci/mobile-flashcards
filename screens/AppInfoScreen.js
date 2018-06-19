@@ -1,14 +1,15 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 
+import Container from '../components/Container';
 import Heading from '../components/Heading';
 
 function AppInfoScreen(props) {
   return (
-    <View>
+    <Container>
       <Heading>App Info</Heading>
       <Text>This app was created as part of Udacity's React Nanodegree</Text>
-  </View>
+    </Container>
   );
 }
 
