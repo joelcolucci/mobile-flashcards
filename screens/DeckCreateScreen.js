@@ -22,7 +22,7 @@ class DeckCreateScreen extends React.Component {
 
   render() {
     return (
-      <Container style={styles.container}>
+      <Container>
         <Heading>Create a new deck</Heading>
         <DeckCreateForm
           onSubmit={this.handleDeckCreateSubmit} />
